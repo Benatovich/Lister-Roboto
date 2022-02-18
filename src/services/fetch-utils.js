@@ -24,7 +24,7 @@ export async function logout() {
 
 export async function addToWatchlist(movie) {
   const response = await client
-    .from('watchlist-items')
+    .from('watchlist_items')
     .insert(movie);
 
   return checkError(response);
@@ -32,7 +32,7 @@ export async function addToWatchlist(movie) {
 
 export async function getWatchlist() {
   const response = await client
-    .from('watchlist-items')
+    .from('watchlist_items')
     .select()
     .order('id');
 
@@ -41,7 +41,7 @@ export async function getWatchlist() {
 
 export async function watchMovie(id) {
   const response = await client
-    .from('watchlist-items')
+    .from('watchlist_items')
     .update({ watched: true })
     .match({ id })
     .single();
@@ -50,7 +50,7 @@ export async function watchMovie(id) {
 }
 
 export async function searchMovies(query) {
-  const response = await fetch(`/.netlify/functions/movies-endpoint?search=${query}`);
+  const response = await fetch(`/.netlify/functions/movies-endpoint?searchQuery=${query}`);
 
   const json = await response.json();
 
