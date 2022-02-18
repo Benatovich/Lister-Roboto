@@ -34,12 +34,12 @@ export default function AuthPage({ setUser }) {
     <div className='auth-page' >
       <form onSubmit={handleSignUp}>
         <input placeholder='email' value={signUpEmail} onChange={e => setSignUpEmail(e.target.value)} />
-        <input placeholder='password' value={signUpPassword} onChange={e => setSignUpPassword(e.target.value)} />
+        <input placeholder='password' value={signUpPassword} type='password' onChange={e => setSignUpPassword(e.target.value)} />
         <button>Sign Up</button>
       </form>
       <form onSubmit={handleSignIn}>
         <input placeholder='email' value={signInEmail} onChange={e => setSignInEmail(e.target.value)} />
-        <input placeholder='password' value={signInPassword} onChange={e => setSignInPassword(e.target.value)} />
+        <input placeholder='password' type='password' value={signInPassword} onChange={e => setSignInPassword(e.target.value)} />
         <button>Sign In</button>
       </form>
     </div>
