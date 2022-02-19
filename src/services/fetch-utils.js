@@ -48,6 +48,15 @@ export async function watchMovie(id) {
 
   return checkError(response);
 }
+export async function unwatchMovie(id) {
+  const response = await client
+    .from('watchlist_items')
+    .update({ watched: false })
+    .match({ id })
+    .single();
+
+  return checkError(response);
+}
 
 export async function searchMovies(query) {
   const response = await fetch(`/.netlify/functions/movies-endpoint?searchQuery=${query}`);
