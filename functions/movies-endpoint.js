@@ -2,9 +2,13 @@ const fetch = require('node-fetch');
 require('dotenv').config();
 
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
+  const search = event.queryStringParameters.searchQuery;
+
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_KEY}&language=en-US&page=1&include_adult=false&query=${search}`;
+
   try {
-    const response = await fetch('https://cat-fact.herokuapp.com/facts');
+    const response = await fetch(url);
     const data = await response.json();
     const json = JSON.stringify({ data });
     
