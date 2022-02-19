@@ -16,47 +16,41 @@ function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
 
   return (
-    <Router>
+    <><Router>
       <div className="App">
-        {
-          user &&
+        {user &&
           <ul>
             <li>
               <NavLink activeClassName='my-active-class' to="/search">Search Page</NavLink>
             </li>
             <li>
-              <NavLink activeClassName='my-active-class' to="/watchlist">Watchlist</NavLink>
+              <NavLink title='watchlist' activeClassName='my-active-class' to="/watchlist">Watchlist</NavLink>
             </li>
             <li>
               <button onClick={logout}>Logout</button>
             </li>
-          </ul>
-        }
+          </ul>}
         <Switch>
           <Route exact path="/">
-            {
-              user
-                ? <Redirect to="/search"/>
-                : <AuthPage setUser={setUser}/>
-            }
+            {user
+              ? <Redirect to="/search" />
+              : <AuthPage setUser={setUser} />}
           </Route>
           <Route exact path="/search">
-            {
-              !user
-                ? <Redirect to="/"/>
-                : <SearchPage />
-            }
+            {!user
+              ? <Redirect to="/" />
+              : <SearchPage />}
           </Route>
           <Route exact path="/watchlist">
-            {
-              !user
-                ? <Redirect to="/"/>
-                : <WatchlistPage />
-            }
+            {!user
+              ? <Redirect to="/" />
+              : <WatchlistPage />}
           </Route>
         </Switch>
       </div>
     </Router>
+    <p className='test' title='test'>test</p>
+    </>
   );
 }
 
