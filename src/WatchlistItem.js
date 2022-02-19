@@ -15,7 +15,7 @@ export default function WatchlistItem(props) {
       <h3>{props.movie.title}</h3>
       <em>{props.movie.description}</em>
       <p>
-        <img src={props.movie.poster_path ? `https://image.tmdb.org/t/p/original${props.movie.poster_path}` : './movie-poster-placeholder.png'} />
+        <img src={props.movie.poster ? `https://image.tmdb.org/t/p/original${props.movie.poster}` : './movie-poster-placeholder.png'} />
       </p>
     </div>
   );
